@@ -29,12 +29,17 @@ public class App {
 			e.printStackTrace();
 		}
 
-		System.out.println("Enter your name:");
-		Scanner scanner = new Scanner(System.in);
-		String inputString = scanner.nextLine();
-		System.out.println("Hello " + inputString + "!");
-		scanner.close();
-
+		System.out.println("Enter username:");
+		Scanner username = new Scanner(System.in);
+		System.out.println("Enter password:");
+		Scanner password = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new FileReader("book.csv"));
+		String uname = username.next();
+		String pw = password.next();
+		if(uname=="admin" && pw=="admin)
+		{
+				   
+		}
 		return result;
 	}
 
