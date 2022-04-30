@@ -33,14 +33,20 @@ public class App {
 		Scanner username = new Scanner(System.in);
 		System.out.println("Enter password:");
 		Scanner password = new Scanner(System.in);
-		BufferedReader br = new BufferedReader(new FileReader("book.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("SE-Project/app/src/main/resources/book.csv"));
 		String uname = username.next();
 		String pw = password.next();
-		if(uname=="admin" && pw=="admin)
+		String line;
+    		/*while ( (line = br.readLine()) != null ) 
 		{
-				   
-		}
-		return result;
+       			String[] values = line.split(",");
+       	 		if(values[searchColumnIndex].equals(searchString)) 
+			{
+            			resultRow = line;
+            			break;
+        		}
+    		}
+		return result;*/
 	}
 
 	public static void main(String[] args) {
