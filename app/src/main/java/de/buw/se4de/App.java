@@ -16,6 +16,8 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.File;
+
 
 public class App
 {
@@ -67,7 +69,13 @@ public class App
 		System.out.println("Enter 2 to Logout");
     	Scanner number = new Scanner(System.in);
 		String num = number.next();
-		BufferedReader br = new BufferedReader(new FileReader("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\book.csv"));
+		File rfile = new File("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\book.csv");
+		BufferedReader br = new BufferedReader(new FileReader(rfile));
+		File file = new File("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\temp.csv");
+		if(!file.exists())
+			file.createNewFile();
+		FileWriter filew= new FileWriter(file.getAbsoluteFile());
+		BufferedWriter decision = new BufferedWriter(filew);
 		String line;
 		if (num.equals("1")) ;
 		{
@@ -80,14 +88,15 @@ public class App
 					System.out.println("Enter your decision ? (yes or no)");
 					Scanner input = new Scanner(System.in);
 					String in = input.next();
-					FileWriter filew = new FileWriter("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\book.csv",true);
-					BufferedWriter decision = new BufferedWriter(filew);
-					decision.write(values[0] + "," + values[1] + "," + in);
-					decision.newLine();
-					decision.close();
+					decision.write(values[0] + "," + values[1] + "," + in+ "\n");
+					// this a close from the decision function //
+					
 				}
 				
 			}
+			boolean success = file.renameTo(rfile);
+			System.out.println(success);
+			decision.close();
 		}
 		
 	}
