@@ -27,6 +27,7 @@ public class App
 		System.out.println("Enter username and password");
 		Scanner username = new Scanner(System.in);
 		Scanner password = new Scanner(System.in);
+		// Scanner is to scan the new inputs
 		BufferedReader br = new BufferedReader(new FileReader("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\Credentials.csv"));
 		String uname = username.next();
 		String pw = password.next();
@@ -41,9 +42,11 @@ public class App
        	 		App.Adminfunc();
             	break;
         	}
+		// adds admin as uname and pw is admin
        	 	
 			else if((uname.equals(values[0]) && pw.equals(values[1])))
 			{
+				// else if is a control flow statment that allows to execute a function only if a certain condition is met
 				flag=1;
 				App.Userfunc(uname);
 				break;
@@ -57,7 +60,7 @@ public class App
     	{
     		System.out.println("You are not a valid user! Try again!");
     	}
-    	
+// the user is not validated    	
 		username.close();
 		password.close();
 		br.close();
@@ -67,10 +70,12 @@ public class App
 	{
 		System.out.println("Admin Logged in \nEnter 1 to display user's leave requests");
 		System.out.println("Enter 2 to Logout");
+		// Admin log in and logout is formed
     	Scanner number = new Scanner(System.in);
 		String num = number.next();
 		File rfile = new File("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\book.csv");
 		BufferedReader br = new BufferedReader(new FileReader(rfile));
+		// BufferedReader simplifies and extend the character input stream 
 		File file = new File("C:\\Civil Career\\Summer term 2022\\1- Software Engineering\\Ass 2\\SE-Project-try2\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\SE-Project-ac199bf9917c77a06c698758b28e2f74a933753f\\app\\src\\main\\resources\\temp.csv");
 		if(!file.exists())
 			file.createNewFile();
@@ -78,10 +83,12 @@ public class App
 		BufferedWriter decision = new BufferedWriter(filew);
 		String line;
 		if (num.equals("1")) ;
+		// with string as number enable to develop functions for each numerical entered 
 		{
 			while((line = br.readLine()) != null) 
 			{
 				String[] values = line.split(",");
+				// line.split separates the string of numbers with comma 
 				if(values[2].equals("Not Decided")) 
 				{
 					System.out.print("Available leave request from " + values[0] +", number of hours requested: "+ values[1] + "\n");
@@ -116,7 +123,8 @@ public class App
 				while((line = br.readLine()) != null) 
 				{
 					String[] values = line.split(",");
-					if(values[0].equals(uname)) 
+					if(values[0].equals(uname))
+						// when integer 1 is entered total working hours is displayed
 					{
 						System.out.print("Total working hours " + values[2]);
 					}
@@ -133,11 +141,12 @@ public class App
 				System.out.println("Info sent to Admin \nPlease wait for approval \nSigned out");
 				work_hours.close();
 				storing.close();
+				// number 2 enable the user to enter leave request in hours
 			}
 			else if (num.equals("3")) 
 			{
 //				temp = 1;
-				System.out.println("Logged out");
+				System.out.println("Logged out"); // 3 is used to log out
 			}
 //	}
 			number.close();
